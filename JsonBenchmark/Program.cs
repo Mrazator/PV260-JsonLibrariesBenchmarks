@@ -1,4 +1,5 @@
-﻿using BenchmarkDotNet.Running;
+﻿using System.Reflection;
+using BenchmarkDotNet.Running;
 
 namespace JsonBenchmark
 {
