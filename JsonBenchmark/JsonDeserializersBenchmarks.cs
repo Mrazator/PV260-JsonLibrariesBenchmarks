@@ -7,8 +7,10 @@ using BenchmarkDotNet.Attributes.Jobs;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Validators;
 using JsonBenchmark.TestDTOs;
+using JsonBenchmark.TestDTOs.Chuck;
 using JsonBenchmark.TestDTOs.Json2;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace JsonBenchmark
 {
@@ -27,26 +29,39 @@ namespace JsonBenchmark
         //Looks like it is much much faster than from string
         //up to 170 000 faster!!! or i am doing something wrong :)
         [Benchmark]
-        public Root NewtonsoftJson_Deserialize_FromStream()
+        public RootChuck NewtonsoftJson_Deserialize_FromStream()
         {
             while (Reader.Read())
             {
-                return new JsonSerializer().Deserialize<Root>(Reader);
+                return new JsonSerializer().Deserialize<RootChuck>(Reader);
             }
 
             return null;
         }
 
         [Benchmark]
-        public Root NewtonsoftJson_Deserialize()
+        public RootChuck NewtonsoftJson_Deserialize()
         {
-            return JsonConvert.DeserializeObject<Root>(JsonSampleString);
+            return JsonConvert.DeserializeObject<RootChuck>(JsonSampleString);
         }
 
         [Benchmark]
-        public Root2 NewtonsoftJson_Deserialize_Json2()
+        public RootChuck NewtonsoftJson_Deserialize_Dynamic()
         {
-            return JsonConvert.DeserializeObject<Root2>(JsonSampleString2);
+            return JsonConvert.DeserializeObject<dynamic>(JsonSampleString).ToObject<RootChuck>();
+        }
+
+        [Benchmark]
+        public RootChuck NewtonsoftJson_Deserialize_Parse()
+        {
+            dynamic receivedObject = JObject.Parse(JsonSampleString);
+            return receivedObject.ToObject<RootChuck>();
+        }
+
+        [Benchmark]
+        public RootJson2 NewtonsoftJson_Deserialize_Json2()
+        {
+            return JsonConvert.DeserializeObject<RootJson2>(JsonSampleString2);
         }
     }
 }

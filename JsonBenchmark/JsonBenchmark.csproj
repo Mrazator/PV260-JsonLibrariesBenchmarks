@@ -152,10 +152,10 @@
     <Compile Include="JsonDeserializersBenchmarks.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestDTOs\Json2\Result2.cs" />
-    <Compile Include="TestDTOs\Json2\Root2.cs" />
-    <Compile Include="TestDTOs\Result.cs" />
-    <Compile Include="TestDTOs\Root.cs" />
+    <Compile Include="TestDTOs\Json2\ResultJson2.cs" />
+    <Compile Include="TestDTOs\Json2\RootJson2.cs" />
+    <Compile Include="TestDTOs\Chuck\ResultChuck.cs" />
+    <Compile Include="TestDTOs\Chuck\RootChuck.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ToDo.txt" />

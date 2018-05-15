@@ -8,6 +8,7 @@ using BenchmarkDotNet.Attributes.Columns;
 using BenchmarkDotNet.Attributes.Exporters;
 using BenchmarkDotNet.Attributes.Jobs;
 using JsonBenchmark.TestDTOs;
+using JsonBenchmark.TestDTOs.Chuck;
 using JsonBenchmark.TestDTOs.Json2;
 using Newtonsoft.Json;
 
@@ -19,20 +20,20 @@ namespace JsonBenchmark
     [HtmlExporter]
     public class JsonSerializersBenchmarks : JsonBenchmarkBase
     {
-        private Root Root => new JsonDeserializersBenchmarks().NewtonsoftJson_Deserialize();
-        private Root Root_Stream => new JsonDeserializersBenchmarks().NewtonsoftJson_Deserialize_FromStream();
+        private RootChuck RootChuck => new JsonDeserializersBenchmarks().NewtonsoftJson_Deserialize();
+        private RootChuck RootChuckStream => new JsonDeserializersBenchmarks().NewtonsoftJson_Deserialize_FromStream();
 
         [Benchmark]
         public string NewtonsoftJson_Serialize()
         {
-            return JsonConvert.SerializeObject(Root);
+            return JsonConvert.SerializeObject(RootChuck);
         }
 
 
         [Benchmark]
         public string NewtonsoftJson_Serialize_Stream()
         {
-            return JsonConvert.SerializeObject(Root_Stream);
+            return JsonConvert.SerializeObject(RootChuckStream);
         }
     }
 }

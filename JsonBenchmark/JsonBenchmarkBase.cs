@@ -19,10 +19,7 @@ namespace JsonBenchmark
             JsonSampleString2 = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, TestFilesFolder, "json2.json"));
             JsonSampleStream = File.OpenRead(Path.Combine(AppContext.BaseDirectory, TestFilesFolder, "chucknorris.json"));
             StreamReader = new StreamReader(JsonSampleStream);
-            var reader = new JsonTextReader(StreamReader);
-            //Reader = reader.ReadAsString().Length
-            Reader = reader;
-
+            Reader = new JsonTextReader(StreamReader);
         }
     }
 }

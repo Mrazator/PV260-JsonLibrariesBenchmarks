@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace JsonBenchmark.TestDTOs.Json2
 {
-    public class Root2
+    public class RootJson2
     {
         public string squadName { get; set; }
-        public Result2[] members { get; set; }
+        public ResultJson2[] members { get; set; }
     }
 }

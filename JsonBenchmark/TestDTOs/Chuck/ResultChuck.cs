@@ -1,6 +1,6 @@
-﻿namespace JsonBenchmark.TestDTOs
+﻿namespace JsonBenchmark.TestDTOs.Chuck
 {
-    public class Result
+    public class ResultChuck
     {
         public string[] category { get; set; }
         public string icon_url { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonBenchmark.TestDTOs.Json2
 {
-    public class Result2
+    public class ResultJson2
     {
         public string name { get; set; }
         public int age { get; set; }
