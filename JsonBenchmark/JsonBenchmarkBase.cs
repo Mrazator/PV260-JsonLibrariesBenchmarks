@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 
 namespace JsonBenchmark
@@ -12,6 +13,7 @@ namespace JsonBenchmark
         protected Stream JsonSampleStream;
         protected StreamReader StreamReader;
         protected JsonReader Reader;
+        protected JavaScriptSerializer JavaScriptSerializer;
 
         protected JsonBenchmarkBase()
         {
@@ -20,6 +22,7 @@ namespace JsonBenchmark
             JsonSampleStream = File.OpenRead(Path.Combine(AppContext.BaseDirectory, TestFilesFolder, "chucknorris.json"));
             StreamReader = new StreamReader(JsonSampleStream);
             Reader = new JsonTextReader(StreamReader);
+            JavaScriptSerializer = new JavaScriptSerializer();
         }
     }
 }

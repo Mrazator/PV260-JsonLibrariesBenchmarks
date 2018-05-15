@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
+using System.Web.Script.Serialization;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Attributes.Columns;
 using BenchmarkDotNet.Attributes.Exporters;
@@ -59,9 +60,28 @@ namespace JsonBenchmark
         }
 
         [Benchmark]
+        public JObject NewtonsoftJson_Deserialize_Parse_JObject()
+        {
+            dynamic receivedObject = JObject.Parse(JsonSampleString);
+            return receivedObject;
+        }
+
+        [Benchmark]
+        public RootChuck JavaScriptSerializer_Deserialize()
+        {
+            return JavaScriptSerializer.Deserialize<RootChuck>(JsonSampleString);
+        }
+
+        [Benchmark]
         public RootJson2 NewtonsoftJson_Deserialize_Json2()
         {
             return JsonConvert.DeserializeObject<RootJson2>(JsonSampleString2);
+        }
+
+        [Benchmark]
+        public RootJson2 JavaScriptSerializer_Deserialize_Json2()
+        {
+            return JavaScriptSerializer.Deserialize<RootJson2>(JsonSampleString2);
         }
     }
 }

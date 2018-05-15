@@ -22,6 +22,8 @@ namespace JsonBenchmark
     {
         private RootChuck RootChuck => new JsonDeserializersBenchmarks().NewtonsoftJson_Deserialize();
         private RootChuck RootChuckStream => new JsonDeserializersBenchmarks().NewtonsoftJson_Deserialize_FromStream();
+        private RootJson2 RootJson2 => new JsonDeserializersBenchmarks().NewtonsoftJson_Deserialize_Json2();
+
 
         [Benchmark]
         public string NewtonsoftJson_Serialize()
@@ -29,11 +31,28 @@ namespace JsonBenchmark
             return JsonConvert.SerializeObject(RootChuck);
         }
 
-
         [Benchmark]
         public string NewtonsoftJson_Serialize_Stream()
         {
             return JsonConvert.SerializeObject(RootChuckStream);
+        }
+
+        [Benchmark]
+        public string JavaScriptSerializer_Serialize()
+        {
+            return JavaScriptSerializer.Serialize(RootChuck);
+        }
+
+        [Benchmark]
+        public string NewtonsoftJson_Serialize_Json2()
+        {
+            return JsonConvert.SerializeObject(RootJson2);
+        }
+
+        [Benchmark]
+        public string JavaScriptSerializer_Serialize_Json2()
+        {
+            return JavaScriptSerializer.Serialize(RootJson2);
         }
     }
 }
