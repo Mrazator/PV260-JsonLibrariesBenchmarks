@@ -19,6 +19,7 @@ namespace JsonBenchmark
         protected JsonSerializer JsonSerializer;
         protected JavaScriptSerializer JavaScriptSerializer;
         protected DataContractJsonSerializer DataContractJsonSerializer;
+        //protected HaveBoxJSON.JsonConverter JsonConverter;
 
         [GlobalSetup]
         public void SetUp()
@@ -29,6 +30,7 @@ namespace JsonBenchmark
             JsonSerializer = new JsonSerializer();
             JavaScriptSerializer = new JavaScriptSerializer();
             DataContractJsonSerializer = new DataContractJsonSerializer(typeof(RootChuck));
+            //JsonConverter = new HaveBoxJSON.JsonConverter();
         }
     }
 }
