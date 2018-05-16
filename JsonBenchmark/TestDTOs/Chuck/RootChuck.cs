@@ -1,8 +1,14 @@
-﻿namespace JsonBenchmark.TestDTOs.Chuck
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
+
+namespace JsonBenchmark.TestDTOs.Chuck
 {
+    [DataContract]
     public class RootChuck
     {
-        public int total { get; set; }
-        public ResultChuck[] ResultChuck { get; set; }
+        [DataMember]
+        public int Total { get; set; }
+        [DataMember]
+        public ResultChuck[] Result { get; set; }
     }
 }
